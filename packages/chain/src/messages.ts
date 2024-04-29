@@ -27,7 +27,6 @@ export class Message extends Struct({
 
 @runtimeModule()
 export class Messages extends RuntimeModule<MessagesConfig> {
-  @state() public agentId = State.from<UInt64>(UInt64);
   @state() public lastMessageRecevied = StateMap.from<UInt64, UInt64>(
     UInt64,
     UInt64
@@ -39,7 +38,6 @@ export class Messages extends RuntimeModule<MessagesConfig> {
 
   @runtimeMethod()
   public initAgent(agentId: UInt64, securityCodeHash: Field) {
-    this.agentId.set(agentId);
     this.securityCodeHashes.set(agentId, securityCodeHash);
   }
 
